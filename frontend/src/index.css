@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+
+
+@tailwind utilities;
+
+/* Apply global font and smooth scroll */
+:root {
+  --primary-color: #4f46e5; /* Indigo 600 */
+  --secondary-color: #06b6d4; /* Cyan 500 */
+  --text-color: #1f2937; /* Gray-800 */
+  --bg-color: #f9fafb; /* Gray-50 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
+
+/* Smooth transitions for hover effects */
+a, button {
+  transition: all 0.3s ease;
+}
+
+/* Utility classes for sections */
+.section {
+  @apply py-20 px-6 md:px-16 lg:px-24;
+}
+
+.section-title {
+  @apply text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900;
+}
+
+.section-subtitle {
+  @apply text-lg md:text-xl text-gray-600 text-center max-w-2xl mx-auto mb-12;
+}
+
+/* Glass effect (for cards or hero overlay) */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Fancy hover button */
+.btn-primary {
+  @apply bg-indigo-600 text-white font-medium py-3 px-6 rounded-lg hover:bg-indigo-700 shadow-md;
+}
+
+.btn-secondary {
+  @apply bg-cyan-500 text-white font-medium py-3 px-6 rounded-lg hover:bg-cyan-600 shadow-md;
+}
+
+/* Card styling */
+.card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-transform duration-300 hover:scale-105;
+}
+
+/* Hero text gradient */
+.text-gradient {
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth hover for links */
+.link-hover:hover {
+  @apply text-indigo-600 underline;
+}
