@@ -1,5 +1,5 @@
 import React from 'react'
-import { Demosteps } from '../utils'
+import { demoSteps } from '../utils';
 const VideoDemoSection = () => {
 
   return (
@@ -9,7 +9,7 @@ const VideoDemoSection = () => {
         Summarize and enhance your videos in just three simple steps.
       </p>
 
-      {/* Mock Video Preview */}
+      
       <div className="max-w-4xl mx-auto mt-12 relative">
         <div className="w-full h-64 md:h-96 bg-black rounded-xl shadow-lg overflow-hidden relative">
           <video
@@ -27,16 +27,16 @@ const VideoDemoSection = () => {
         </div>
       </div>
 
-      {/* Steps */}
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-        {Demosteps.map((step, index) => (
+      {demoSteps.map(({ icon: Icon, title, description }, index) => (
           <div
             key={index}
             className="card text-center hover:scale-105 transform transition duration-300"
           >
-            {step.icon}
-            <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-            <p className="text-gray-600">{step.description}</p>
+            <Icon className="text-5xl text-indigo-600 mb-4 mx-auto" />
+            <h3 className="text-xl font-semibold mb-2">{title}</h3>
+            <p className="text-gray-600">{description}</p>
           </div>
         ))}
       </div>

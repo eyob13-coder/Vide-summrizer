@@ -1,24 +1,33 @@
-import React from 'react'
-import { reviews } from '../utils'
-
+import { reviews } from "../utils";
 
 const ReviewsSection = () => {
   return (
-    <section className="section bg-white text-center">
-      <h2 className="section-title text-gradient">What People Say</h2>
-      <p className="section-subtitle">Creators, educators, and streamers love our app.</p>
+    <section className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-6">What Our Users Say</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-        {reviews.map((review, index) => (
-          <div key={index} className="card text-left">
-            <p className="text-gray-700 mb-4">“{review.text}”</p>
-            <h3 className="font-semibold text-gray-900">{review.name}</h3>
-            <p className="text-sm text-gray-500">{review.role}</p>
-          </div>
-        ))}
+        <div className="grid md:grid-cols-3 gap-8 mt-8">
+          {reviews.map(({ name, role, text, img }, idx) => (
+            <div
+              key={idx}
+              className="bg-gray-50 shadow-md rounded-lg p-6 text-center hover:shadow-xl transition"
+            >
+              {img && (
+                <img
+                  src={img}
+                  alt={name}
+                  className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
+                />
+              )}
+              <p className="text-gray-700 italic mb-3">"{text}"</p>
+              <h4 className="font-semibold text-indigo-600">{name}</h4>
+              <span className="text-gray-500 text-sm">{role}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default ReviewsSection
+export default ReviewsSection;

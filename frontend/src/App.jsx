@@ -9,7 +9,6 @@ import HeroSection from '../components/HeroSection';
 import FeaturesSection from '../components/FeaturesSection';
 import VideoDemoSection from '../components/VideoDemoSection';
 import UploadDemo from '../components/UploadDemo';
-import HowItWorks from '../components/HowItWorks';
 import ReviewsSection from '../components/ReviewsSection';
 import FAQSection from '../components/FAQSection';
 import Footer from '../components/Footer';
@@ -20,7 +19,6 @@ const App = () => {
       <FeaturesSection />
       <VideoDemoSection />
       <UploadDemo />
-      <HowItWorks />
       <ReviewsSection />
       <FAQSection />
       <Footer />

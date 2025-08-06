@@ -12,17 +12,17 @@ const FAQSection = () => {
     <section className="section bg-gray-50">
     <h2 className="section-title text-gradient">Frequently Asked Questions</h2>
     <div className="max-w-3xl mx-auto mt-8 space-y-4">
-      {faqs.map((faq, index) => (
+    {faqs.map(({ question, answer }, idx)=> (
         <div
-          key={index}
+          key={idx}
           className="border border-gray-200 bg-white rounded-xl p-4 shadow cursor-pointer hover:shadow-md transition"
-          onClick={() => toggleFAQ(index)}
+          onClick={() => toggleFAQ(idx)}
         >
           <h3 className="font-semibold text-gray-800 flex justify-between">
-            {faq.question}
-            <span>{activeIndex === index ? "−" : "+"}</span>
+            {question}
+            <span>{activeIndex === idx ? "−" : "+"}</span>
           </h3>
-          {activeIndex === index && <p className="mt-2 text-gray-600">{faq.answer}</p>}
+          {activeIndex === idx && <p className="mt-2 text-gray-600">{answer}</p>}
         </div>
       ))}
     </div>

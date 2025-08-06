@@ -11,14 +11,14 @@ const FeaturesSection = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-        {features.map((feature, index) => (
+      {features.map(({ icon: Icon, title, description }, idx) => (
           <div
-            key={index}
+            key={idx}
             className="card text-center hover:scale-105 transform transition duration-300"
           >
-            {feature.icon}
-            <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-            <p className="text-gray-600">{feature.description}</p>
+           <Icon className="text-4xl text-indigo-600 mb-4 mx-auto" />
+            <h3 className="text-xl font-semibold mb-2">{title}</h3>
+            <p className="text-gray-600">{description}</p>
           </div>
         ))}
       </div>
