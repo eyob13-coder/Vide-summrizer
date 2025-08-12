@@ -4,6 +4,13 @@ import ffmpegService from '../services/ffmpeg.service.js';
 
 export const uploadVideo = async (req, res, next) => {
   try {
+
+    
+    if (!req.user?._id) {
+      return res.status(401).json({ message: 'Unauthorized.' });
+    }
+
+    
     if (!req.file) {
       return res.status(400).json({ message: 'No video file uploaded.' });
     }
@@ -30,15 +37,22 @@ export const uploadVideo = async (req, res, next) => {
   }
 };
 
-export const getUserVideos = (req, res, next) => {
-    try {
-        if(!user){
-            return res.status(404).json({message: "User Not found"})
-        }
-    } catch (error) {
-        
+export const getUserVideos = async (req, res, next) => {
+  try {
+    if (!req.user?._id) {
+      return res.status(401).json({message: 'Unauthorized'})
     }
-}
+
+    const videos = await Video.find({ user: req.user._id })
+      .select('-__v -filepath') // Exclude sensitive/irrelevant fields
+      .sort({ createdAt: -1 });
+
+    res.json(videos);
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 
 export const summarizeVideo = async (req, res, next) => {
@@ -63,10 +77,23 @@ export const summarizeVideo = async (req, res, next) => {
   }
 };
 
-export const deleteVideo = (req, res, next) => {
-    try {
-        
-    } catch (error) {
-        
+export const deleteVideo = async (req, res, next) => {
+  try {
+    const { videoId } = req.params;
+    const video = await Video.findOneAndDelete({ 
+      _id: videoId, 
+      user: req.user._id 
+    });
+
+    if (!video) {
+      return res.status(404).json({ message: 'Video not found.' });
     }
-}
+
+    // Cleanup file
+    await cleanupFile(video.filepath);
+
+    res.json({ message: 'Video deleted successfully.' });
+  } catch (error) {
+    next(error);
+  }
+};

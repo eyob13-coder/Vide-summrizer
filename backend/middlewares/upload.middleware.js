@@ -1,5 +1,6 @@
 import multer from "multer";
 import path from "path";
+import dayjs from 'dayjs'
 
 // Allowed video formats
 const allowedExtensions = [".mp4", ".mov", ".avi", ".mkv", ".webm"];
@@ -10,7 +11,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/videos"); // make sure this folder exists
   },
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const uniqueSuffix = dayjs() + "-" + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
     cb(null, file.fieldname + "-" + uniqueSuffix + ext);
   }
