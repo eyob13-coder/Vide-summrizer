@@ -58,6 +58,10 @@ a, button {
   @apply bg-cyan-500 text-white font-medium py-3 px-6 rounded-lg hover:bg-cyan-600 shadow-md;
 }
 
+.sbt-btn {
+  @apply w-full bg-gradient-to-r from-indigo-600 to-cyan-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-indigo-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transform transition-all duration-200 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg
+}
+
 /* Card styling */
 .card {
   @apply bg-white rounded-xl shadow-lg p-6 transition-transform duration-300 hover:scale-105;
